@@ -16,8 +16,9 @@ const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const csp = require('express-csp');
 
-
+// start express app
 const app = express();
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(helmet());
 app.use(helmet());
+// had to add all this to get around security errors
 csp.extend(app, {
   policy: {
       directives: {
